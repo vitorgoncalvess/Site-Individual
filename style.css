@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: 	#1d211c;
+    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+    font-weight: 600;
+    font-size: 20px;
+}
+.ul1 {
+    list-style: none;
+    display: flex;
+    margin-top: 15px;
+    margin-left: 0px;
+}
+.ul2 {
+    list-style: none;
+    display: flex;
+    margin-top: -47px;
+    margin-left: 80px;
+}
+.ul3 {
+    list-style: none;
+    display: flex;
+    margin-top: -47px;
+    margin-left: 190px;
+}
+li {
+    cursor: pointer;
+}
+.money {
+    border: 2px solid rgb(9, 39, 0);
+    border-radius: 5px;
+    background-color: rgb(3, 34, 0);
+    color: white;
+    height: 20px;
+    width: 130px;
+    margin-top: 20px;
+    margin-left: 750px;
+    text-align: center;
+    font-size: 15px;
+    align-content: center;
+    
+}
+.money1 {
+    margin-left: 750px;
+    width: 130px;
+}
+.lista {
+    margin-top: 0px;
+    color: rgb(157, 255, 45);
+}
+.header {
+    background-color: #203b1b;
+    width: 100%;
+    height: 60px;
+    border-bottom: 4px solid #254120;
+    margin-top: 0px;
+    display: flex;
+}
+.logo {
+    height: 50px;
+    margin-top: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.tabela {
+    background-color: #1d311a;
+    height: 1100px;
+    width: 200px;
+    border-right: 4px solid #204122;
+}
+.propaganda {
+    margin-top: -1050px;
+    margin-left: 280px;
+    height: 300px;
+    width: 80%;
+}
+.imagem {
+    height: 385px;
+    width: 1000px;
+    cursor: pointer;
+}
+.containerJogos {
+    border: 2px solid #204122;
+    background-color: #1d311a;
+    width: 997px;
+    height: 400px;
+    margin-top: 100px;
+    margin-left: 280px;
+}
