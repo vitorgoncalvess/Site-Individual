@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <title>Midas Gain</title>
 </head>
-<body onload="loadPropaganda()">
-    <div class="header">
+<body id="corpo"onload="loadPropaganda()">
+    <div id="blur1" class="blur">
+    <div id="header" class="header">
         <img class="logo" src="imagens/tres pontos.png" alt="">
         <img  class="logo" src="imagens/logo.png" alt="">
         <div class="money" style="display: none;"><b style="margin-top: 10px;">R$1000.00</b></div>
@@ -24,6 +25,7 @@
                 <li id="contatoContent">Contato</li>
             </ul>
         </div>
+    </div>
     </div>
     <div id="containerLogin" class="containerLogin">
         <span class="loginInputs">Email</span> <br>
@@ -53,6 +55,7 @@
             <span class="problemaCadastro">Problemas com o cadastro?</span>
         </div>
     </div>
+    <div id="blur2">
     <div id="containerCadastroHide" class="containerLoginHide"></div>
     <div id="tabela" class="tabela">
         <div class="jogosTabela" onclick="aparecerJogos()">
@@ -74,8 +77,9 @@
     <div class="propaganda">
         <img id="imagem" class="imagem" src="imagens\campanha-bola-1200x480.jpg">
     </div>
-    <div class="containerJogos"></div>
-    <div class="futter"></div>
+    <div id="containerJogos" class="containerJogos"></div>
+    <div id="futter" class="futter"></div>
+    </div>
 </body>
 </html>
 <script src="script.js"></script>

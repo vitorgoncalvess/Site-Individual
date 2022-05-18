@@ -7,6 +7,7 @@ b = 1
 loginC = 0
 cadastroC = 0
 contatoC = 0
+blurCheck = false
     function loadPropaganda() {
         setInterval(loadPropagandaP, 5000)
     }
@@ -60,6 +61,9 @@ contatoC = 0
         }
     }
 document.getElementById('imagem').addEventListener('click', function goToSite() {
+    if (blurCheck) {
+        return false
+    } else {
         if (x == 1) {
             location.href = 'https://www.topper.com.br/'
         } else if (x == 2) {
@@ -67,8 +71,12 @@ document.getElementById('imagem').addEventListener('click', function goToSite() 
         } else if (x == 3) {
             location.href = 'https://www.hermespardini.com.br/blog/?p=237'
         }
-})
+     }
+    })
 function mudarCor() {
+    if (blurCheck) {
+        return false
+    } else {
     if (loginC == 1) {
         loginContent.style.color = '#2bff00'
     } else if (loginC == 0) {
@@ -84,6 +92,7 @@ function mudarCor() {
     } else if (contatoC == 0) {
         contatoContent.style.color = '#2ccf0b'
     }
+ }
 }
 document.getElementById('cadastroContent').addEventListener('click', function abrirCadastro() {
     v++
@@ -91,25 +100,44 @@ document.getElementById('cadastroContent').addEventListener('click', function ab
     containerCadastro.style.display = 'block'
     containerCadastroHide.style.display = 'none'
     containerLogin.style.display = 'none'
+    blur1.style.filter = 'blur(2px)'
+    blur2.style.filter = 'blur(2px)'
+    imagem.style.cursor = 'default'
+    loginContent.style.cursor = 'default'
+    cadastroContent.style.cursor = 'default'
+    contatoContent.style.cursor = 'default'
+    blurCheck = true
     b = 1
+    tabela.style.marginTop = '-474px'
+    setTimeout(timerSairBotao,100)
     } else {
         containerCadastro.style.display = 'none'
         containerLogin.style.display = 'none'
         containerCadastroHide.style.display = 'block'
+        blur1.style.filter = 'blur(0px)'
+        blur2.style.filter = 'blur(0px)'
+        imagem.style.cursor = 'pointer'
+        blurCheck = false
+        loginContent.style.cursor = 'pointer'
+        cadastroContent.style.cursor = 'pointer'
+        contatoContent.style.cursor = 'pointer'
     }
 })
+function timerSairBotao() {
+    document.getElementById("blur1").addEventListener('click', sairBotao)
+    document.getElementById("blur2").addEventListener('click', sairBotao)
+}
 document.getElementById('loginContent').addEventListener('click', function abrirLogin() {
     b++
     if (b % 2 == 0) {
         containerLogin.style.display = 'block'
-        containerCadastroHide.style.display = 'none'
-        containerCadastro.style.display = 'none'
+        tabela.style.marginTop = '-827.6px'
         v = 1
     } else {
         containerLogin.style.display = 'none'
         containerCadastroHide.style.display = 'block'
         containerCadastro.style.display = 'none'
-        tabela.style.marginTop = `-354px`
+        tabela.style.marginTop = '-474px'
     }
 })
 document.getElementById("loginContent").addEventListener('mouseover', function loginCheck() {
@@ -136,3 +164,17 @@ document.getElementById('contatoContent').addEventListener('mouseout', function 
     contatoC = 0
     mudarCor()
 })
+function sairBotao() {
+    containerCadastro.style.display = 'none'
+    containerCadastroHide.style.display = 'block'
+    blur1.style.filter = 'blur(0px)'
+    blur2.style.filter = 'blur(0px)'
+    imagem.style.cursor = 'pointer'
+    blurCheck = false
+    v = 1
+    loginContent.style.cursor = 'pointer'
+        cadastroContent.style.cursor = 'pointer'
+        contatoContent.style.cursor = 'pointer'
+    document.getElementById("blur1").removeEventListener('click', sairBotao)
+    document.getElementById("blur2").removeEventListener('click', sairBotao)
+} 
