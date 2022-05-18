@@ -13,23 +13,69 @@
         <img  class="logo" src="imagens/logo.png" alt="">
         <div class="money" style="display: none;"><b style="margin-top: 10px;">R$1000.00</b></div>
         <div class="money1" style="display: block;"></div>
-        <div class="lista">
+        <div id="lista" class="lista">
             <ul class="ul1">
-                <li>Login</li>
+                <li id="loginContent">Login</li>
             </ul>
             <ul class="ul2">
-                <li>Cadastro</li>
+                <li id="cadastroContent">Cadastro</li>
             </ul>
             <ul class="ul3">
-                <li>Contato</li>
+                <li id="contatoContent">Contato</li>
             </ul>
         </div>
     </div>
-    <div class="tabela"></div>
+    <div id="containerLogin" class="containerLogin">
+        <span class="loginInputs">Email</span> <br>
+        <input class="inputsLogin" type="text"> <br>
+        <span class="loginInputs">Senha</span> <br>
+        <input class="inputsLogin" type="password"> <br>
+        <button class="botaoLogin">Entrar</button> <br>
+        Esqueceu a senha <br>
+        Não tem conta?  
+    </div>
+    <div id="containerCadastro" class="containerCadastro">
+        <div class="camposCadastro">
+            <div class="cadastreSe">Cadastre-se Agora</div>
+            <span class="spanInput">Nome Completo</span>
+            <span class="spanInputEmail">Email</span> <br>
+            <input class="inputsCadastro" type="text">
+            <input class="inputsCadastro" type="text"> <br>
+            <span class="spanInput">Data de Nascimento</span>
+            <span class="spanInputCPF">CPF</span> <br>
+            <input class="inputsCadastro" type="text">
+            <input class="inputsCadastro" type="text"> <br>
+            <span class="spanInput">Senha</span>
+            <span class="spanInputSenha">Repetir Senha</span><br>
+            <input class="inputsCadastro" type="text">
+            <input class="inputsCadastro" type="text"> <br>
+            <button class="botao">Cadastrar</button> <br>
+            <span class="problemaCadastro">Problemas com o cadastro?</span>
+        </div>
+    </div>
+    <div id="containerCadastroHide" class="containerLoginHide"></div>
+    <div id="tabela" class="tabela">
+        <div class="jogosTabela" onclick="aparecerJogos()">
+            JOGOS
+        </div>
+        <div id="jogosJogos" class="abrirJogos" style="display: block;"></div>  
+        <div class="jogosTabela" onclick="aparecerJogos1()">
+            JOGOS AO VIVO
+        </div>
+        <div id="jogosJogos2" class="abrirJogos"></div>
+        <div class="jogosTabela" onclick="aparecerJogos2()">
+            SLOTS
+        </div>
+        <div id="jogosJogos3" class="abrirJogos"></div>
+        <div class="jogosTabela" onclick="location.href">
+            PROVEDORES
+        </div>
+    </div>
     <div class="propaganda">
         <img id="imagem" class="imagem" src="imagens\campanha-bola-1200x480.jpg">
     </div>
     <div class="containerJogos"></div>
+    <div class="futter"></div>
 </body>
 </html>
 <script src="script.js"></script>

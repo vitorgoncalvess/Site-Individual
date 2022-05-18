@@ -6,6 +6,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
     font-weight: 600;
     font-size: 20px;
+    user-select: none;
 }
 .ul1 {
     list-style: none;
@@ -48,15 +49,20 @@ li {
 }
 .lista {
     margin-top: 0px;
-    color: rgb(157, 255, 45);
+    color: #2ccf0b;
 }
 .header {
-    background-color: #203b1b;
+    background-color: #29631e;
     width: 100%;
     height: 60px;
-    border-bottom: 4px solid #254120;
     margin-top: 0px;
     display: flex;
+}
+.futter {
+    background-color: #193d12;
+    height: 80px;
+    width: 100%;
+    margin-top: 190px;
 }
 .logo {
     height: 50px;
@@ -65,10 +71,127 @@ li {
     cursor: pointer;
 }
 .tabela {
-    background-color: #1d311a;
+    background-color: #23551a;
     height: 1100px;
-    width: 200px;
-    border-right: 4px solid #204122;
+    width: 220px;
+    margin-top: -354px;
+}
+.jogosTabela {
+    border-bottom: 4px solid #1e4418;
+    height: 45px;
+    cursor: pointer;
+    color: #052700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.containerLogin {
+    border: 2px solid #0c0e0c;
+    height: 350px;
+    width: 400px;
+    margin-left: 800px;
+    background-color: #131613;
+    position: relative;
+    display: flex;
+    display: none;
+}
+.loginInputs {
+    color: white;
+    font-size: 30px;
+    margin-left: 30px;
+}
+.containerCadastro {
+    border:2px solid #0c0e0c;
+    height: 350px;
+    width: 500px;
+    position: relative;
+    display: flex;
+    margin-left: 800px;
+    background-color: #131613;
+    display: none;
+}
+.containerLoginHide {
+    height: 354px;
+    width: 500px;
+    position: relative;
+    display: flex;
+    margin-left: 1300px;
+    display: block;
+
+}
+.cadastreSe {
+    color: rgb(0, 175, 0);
+    height: 70px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 700;
+}
+.inputsCadastro {
+    border: 2px solid black;
+    outline: none;
+    background-color: #303830;
+    height: 25px;
+    width: 220px;
+    margin-left: 13px;
+    color: white;
+}
+.inputsLogin {
+    border: 2px solid black;
+    outline: none;
+    background-color: #303830;
+    height: 40px;
+    width: 350px;
+    margin-left: 21px;
+    margin-top: 10px;
+}
+.botaoLogin {
+    border: 2px solid #2ccf0b;
+    background-color: #2cc90d;
+    height: 50px;
+    width: 225px;
+    margin-left: 85px;
+}
+.spanInput {
+    margin-left: 15px;
+    color: white;
+}
+.spanInputEmail {
+    margin-left: 90px;
+    color: white;
+}
+.spanInputCPF {
+    margin-left: 57px;
+    color: white;
+}
+.spanInputSenha {
+    margin-left: 185px;
+    color: white;
+}
+.botao {
+    background-color: #2cc90d;
+    border: 2px solid #2ccf0b;
+    color: white;
+    height: 40px;
+    width: 275px;
+    margin-left: 113px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.problemaCadastro {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    color: #303830;
+    cursor: pointer;
+}
+.abrirJogos {
+    border-bottom: 4px solid #1e4418;
+    background-color: #1d311a;
+    height: 300px;
+    display: none;
 }
 .propaganda {
     margin-top: -1050px;
@@ -82,10 +205,29 @@ li {
     cursor: pointer;
 }
 .containerJogos {
-    border: 2px solid #204122;
-    background-color: #1d311a;
+    border: 2px solid #131613;
+    background-color: #0f130f;
     width: 997px;
     height: 400px;
     margin-top: 100px;
     margin-left: 280px;
+    border-radius: 15px;
 }
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(0, 44, 0); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(0, 78, 0); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 153, 0); 
+  }
