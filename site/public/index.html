@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Midas Gain</title>
+</head>
+<body id="corpo"onload="loadPropaganda()">
+    <div id="blur1" class="blur">
+    <div id="header" class="header">
+        <img  class="logo" src="imagens/logo.png" alt="">
+        <div id="money" class="money" style="display: none;"><b style="margin-top: 10px;">R$1000.00</b></div>
+        <div id="money1" class="money1" style="display: block;"></div>
+        <div id="dinheiro" class="dinheiro">
+            <div class="depositar">Depositar</div>
+            <div class="sacar">Sacar</div>
+        </div>
+        <div id="lista" class="lista">
+            <ul class="ul1">
+                <li id="loginContent">Login</li>
+                <li id="nomeUsuario" style="display: none;"></li>
+            </ul>
+            <ul class="ul2">
+                <li id="cadastroContent">Cadastro</li>
+            </ul>
+            <ul class="ul3">
+                <li id="contatoContent">Contato</li>
+            </ul>
+            <img id="logo1" class="logo1" src="imagens/tres pontos.png" alt="">
+        </div>
+    </div>
+    </div>
+    <div id="containerLogin" class="containerLogin">
+        <span class="loginInputs">Email</span> <br>
+        <input id="emailLogin_input" class="inputsLogin" type="text"> <br>
+        <span class="loginInputs">Senha</span> <br>
+        <input id="senhaLogin_input" class="inputsLogin" type="password"> <br>
+        <button onclick="entrar()" class="botaoLogin">Entrar</button> <br>
+        <span class="problemaLogin">Esqueceu a senha</span>
+        <span class="problemaLogin">Não tem conta?</span>  
+    </div>
+    <div id="containerCadastro" class="containerCadastro">
+        <div class="camposCadastro">
+            <div class="cadastreSe">Cadastre-se Agora</div>
+            <span class="spanInput">Nome Completo</span>
+            <span class="spanInputEmail">Email</span> <br>
+            <input id="nome_input" class="inputsCadastro" type="text">
+            <input id="email_input" class="inputsCadastro" type="text"> <br>
+            <span class="spanInput">Data de Nascimento</span>
+            <span class="spanInputCPF">CPF</span> <br>
+            <input id="data_input" class="inputsCadastro" type="text">
+            <input id="cpf_input" class="inputsCadastro" type="text"> <br>
+            <span class="spanInput">Senha</span>
+            <span class="spanInputSenha">Repetir Senha</span><br>
+            <input id="senha_input" class="inputsCadastro" type="password">
+            <input id="confirmacao_senha_input" class="inputsCadastro" type="password"> <br>
+            <button onclick="cadastrar()" class="botao">Cadastrar</button> <br>
+            <span class="problemaCadastro">Problemas com o cadastro?</span>
+        </div>
+    </div>
+    <div id="blur2">
+    <div id="containerCadastroHide" class="containerLoginHide"></div>
+    <div id="tabela" class="tabela">
+        <div class="jogosTabela" onclick="aparecerJogos()">
+            JOGOS
+        </div>
+        <div id="jogosJogos" class="abrirJogos" style="display: block;"></div>  
+        <div class="jogosTabela" onclick="aparecerJogos1()">
+            JOGOS AO VIVO
+        </div>
+        <div id="jogosJogos2" class="abrirJogos"></div>
+        <div class="jogosTabela" onclick="aparecerJogos2()">
+            SLOTS
+        </div>
+        <div id="jogosJogos3" class="abrirJogos"></div>
+        <div class="jogosTabela" onclick="location.href">
+            PROVEDORES
+        </div>
+    </div>
+    <div class="propaganda">
+        <img id="imagem" class="imagem" src="imagens\campanha-bola-1200x480.jpg">
+    </div>
+    <div id="containerJogos" class="containerJogos"></div>
+    <div id="futter" class="futter"></div>
+    </div>
+</body>
+</html>
+<script src="js/script.js"></script>
+<script src="js/cadastro.js"></script>
+<script src="js/login.js"></script>
