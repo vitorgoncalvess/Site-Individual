@@ -18,3 +18,13 @@ create table historico (
 	fkUsuario int,
 	FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario)
 );
+
+create table endereco (
+	idEndereco int PRIMARY KEY AUTO_INCREMENT,
+	cep CHAR(8),
+	bairro VARCHAR(45),
+	rua VARCHAR(45),
+	numero VARCHAR(10),
+	fkUsuario int,
+	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+) AUTO_INCREMENT = 100;
