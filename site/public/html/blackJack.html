@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlackJack</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/jogoStyle.css">
+    <link rel="stylesheet" href="../css/blackjack.css">
 </head>
 <body>
     <div id="blur1" class="blur">
         <div id="header" class="header">
-            <img  class="logo" src="../imagens/logo.png" alt="">
+            <img  onclick="location.href='../index.html'" class="logo" src="../imagens/logo.png" alt="">
             <div id="money" class="money" style="display: none;"><b style="margin-top: 10px;">R$1000.00</b></div>
             <div id="money1" class="money1" style="display: block;"></div>
             <div id="dinheiro" class="dinheiro">
@@ -62,8 +62,32 @@
             </div>
         </div>
         <div id="blur2">
-            <div class="gameContainer"></div>
+            <div class="gameContainer">
+                <div id="oponente" class="oponente"></div>
+                <div id="pontos" class="pontos">
+                <span id="totalOponente"></span> <br><br>
+                <span id="totalJogador"></span>
+                </div>
+                <div id="jogador" class="jogador"></div>
+                <div id="apostaContainer" class="aposta">
+                    <span class="rs">R$:</span>
+                    <div class="apostaJogo">
+                        <div>
+                        <input class="inputAposta" type="number" id="inputAposta">
+                    </div>
+                    <div class="botaoAposta">
+                        <button class="botaoJogo" onclick="apostar()">Apostar</button> <button class="botaoJogo" onclick="dobrar()">Dobrar</button>
+                    </div>
+                    <div class="botaoInGame">
+                        <button id="botaoPedir" class="botaoPedir">Pedir Carta</button>
+                        <button style="cursor: defaut;" id="botaoParar" class="botaoPedir">Parar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
         <div id="futter" class="futter" style="display: block;"></div>
         </div>
 </body>
 </html>
+<script src="../js/script.js"></script>
+<script src="../js/blackjack.js"></script>
