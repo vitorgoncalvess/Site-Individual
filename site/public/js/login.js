@@ -67,6 +67,5 @@ function entrarLogin() {
     money.innerHTML = `R$${sessionStorage.DINHEIRO_USUARIO}`
     nomeUsuario.style.display = 'block'
     logo1.style.display = 'block'
-    setLogin
     setTimeout(abrirLogin,100)
 }

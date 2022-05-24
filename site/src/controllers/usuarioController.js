@@ -78,10 +78,10 @@ function cadastrar(req, res) {
             );
     }
 }
-function getDinheiro(req, res) {
+function upDinheiro(req, res) {
     var email = req.body.emailServer
-    var senha = req.body.senhaServer
-    usuarioModel.getDinheiroModel(email, senha)
+    var dinheiroStatus = req.body.dinheiroStatusServer
+    usuarioModel.upDinheiroModel(email, dinheiroStatus)
     .then(
         function (resultado) {
             res.json(resultado);
@@ -92,5 +92,5 @@ function getDinheiro(req, res) {
 module.exports = {
     entrar,
     cadastrar,
-    getDinheiro
+    upDinheiro
 }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/blackjack.css">
 </head>
-<body>
+<body onload="validarSessao()">
     <div id="blur1" class="blur">
         <div id="header" class="header">
             <img  onclick="location.href='../index.html'" class="logo" src="../imagens/logo.png" alt="">
@@ -63,6 +63,11 @@
         </div>
         <div id="blur2">
             <div class="gameContainer">
+                <div id="resJogoWin" class="resJogoWin">
+                    <div id="dinheiroGanho" class="dinheiroWin">R$1000<br>x2<br>BlackJack</div>
+                    <div id="loadingBar1" class="loadingBar1"></div>
+                    <div id="loadingBar2" class="loadingBar2"></div>
+                </div>
                 <div id="oponente" class="oponente"></div>
                 <div id="pontos" class="pontos">
                 <span id="totalOponente"></span> <br><br>

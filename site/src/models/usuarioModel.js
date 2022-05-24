@@ -21,9 +21,9 @@ function cadastrar(nome, email, dataNasc, cpf ,senha, dinheiro) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-function getDinheiroModel(email, senha) {
+function upDinheiroModel(email, dinheiroStatus) {
     var instrucao = `
-        SELECT dinheiro FROM usuario WHERE email = '${email}' AND senha = '${senha}'; 
+        UPDATE usuario SET dinheiro = "${dinheiroStatus}" WHERE email = '${email}';
     `;
     return database.executar(instrucao)
 }
@@ -31,5 +31,5 @@ function getDinheiroModel(email, senha) {
 module.exports = {
     entrar,
     cadastrar,
-    getDinheiroModel
+    upDinheiroModel
 };
