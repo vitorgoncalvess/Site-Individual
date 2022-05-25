@@ -9,7 +9,7 @@ create table usuario (
 	dataNasc date,
 	cpf CHAR(11),
 	senha VARCHAR(45),
-	dinheiro VARCHAR(40)
+	dinheiro INT
 ) AUTO_INCREMENT = 1;
 
 create table historico (

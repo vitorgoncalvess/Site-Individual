@@ -8,6 +8,23 @@ loginC = 0
 cadastroC = 0
 contatoC = 0
 blurCheck = false
+function validarSessao() {
+    if (sessionStorage.NOME_USUARIO != undefined) {
+      loginContent.style.display = 'none'
+      cadastroContent.style.display = 'none'
+      contatoContent.style.display = 'none'
+      money1.style.display = 'none'
+      money.style.display = 'block'
+      lista.style.marginLeft = '-800px'
+      dinheiro.style.display = 'block'
+      sessao = sessionStorage.NOME_USUARIO.split(" ")
+      dinheiroSessao = sessionStorage.DINHEIRO_USUARIO
+      nomeUsuario.innerHTML = `${sessao[0]}`
+      money.innerHTML = `R$${dinheiroSessao}`
+      nomeUsuario.style.display = 'block'
+      logo1.style.display = 'block'
+    }
+  }
     function loadPropaganda() {
         setInterval(loadPropagandaP, 5000)
     }

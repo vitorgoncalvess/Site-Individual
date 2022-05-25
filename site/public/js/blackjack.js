@@ -23,8 +23,9 @@ cartas = [
   "../imagens/cartas/valeteEsp.png",
   "../imagens/cartas/reiEsp.png",
 ];
+
 function validarSessao() {
-    if (sessionStorage.NOME_USUARIO != undefined) {
+  if (sessionStorage.NOME_USUARIO != undefined) {
     loginContent.style.display = 'none'
     cadastroContent.style.display = 'none'
     contatoContent.style.display = 'none'
@@ -38,10 +39,21 @@ function validarSessao() {
     money.innerHTML = `R$${dinheiroSessao}`
     nomeUsuario.style.display = 'block'
     logo1.style.display = 'block'
-    }
+  }
 }
+
 function apostar() {
   aposta = Number(inputAposta.value);
+  if (aposta < 1) {
+    return false;
+  }
+  if (aposta > dinheiroSessao) {
+    return false;
+  } 
+  if (sessionStorage.NOME_USUARIO == undefined) {
+    return false;
+  }
+  sessionStorage.DINHEIRO_USUARIO -= aposta
   dinheiroSessao -= aposta
   money.innerHTML = `R$${dinheiroSessao}`
   jogador.innerHTML = "";
@@ -55,13 +67,6 @@ function apostar() {
   empate = false;
   gameStatus = true;
   endGame = false;
-  if (aposta < 1) {
-    return false;
-  } else if (aposta > dinheiroSessao) {
-    return false;
-  } else if (sessionStorage.NOME_USUARIO == undefined) {
-    return false;
-  } else {
     document.getElementById("botaoPedir").addEventListener("click", pegarCarta);
     document.getElementById("botaoParar").addEventListener("click", pararJogo);
     pegarCarta();
@@ -71,11 +76,12 @@ function apostar() {
     botaoParar.style.color = "white";
     botaoParar.style.cursor = "pointer";
     apostaContainer.style.marginTop = "5px";
-  }
 }
+
 function dobrar() {
   inputAposta.value *= 2;
 }
+
 function pegarCarta() {
   carta = Math.floor(Math.random() * 13);
   if (carta >= 10) {
@@ -115,6 +121,7 @@ function pegarCarta() {
     pararJogo();
   }
 }
+
 function pegarCartaOponente() {
   cartaO = Math.floor(Math.random() * 13);
   if (cartaO >= 10) {
@@ -125,8 +132,6 @@ function pegarCartaOponente() {
   oponente.innerHTML += `<img class="cartaImagem" src="${cartas[cartaO]}">`;
   if (cartaO == 0 && totalO < 11) {
     cartaAO = true;
-  } else {
-    cartaAO = false;
   }
   somarPontos();
   if (totalO > limite) {
@@ -148,6 +153,7 @@ function pegarCartaOponente() {
     pegarCartaOponenteFinal();
   }
 }
+
 function somarPontos() {
   if (cartaA && gameStatus == true && totalJ <= 11) {
     totalJogador.innerHTML = `${totalJ} ou ${totalJ + 10}`;
@@ -160,6 +166,7 @@ function somarPontos() {
     totalOponente.innerHTML = totalO;
   }
 }
+
 function pararJogo() {
   botaoPedir.style.cursor = "default";
   botaoPedir.style.color = "rgb(136, 136, 136)";
@@ -171,27 +178,26 @@ function pararJogo() {
   document.getElementById("botaoParar").removeEventListener("click", pararJogo);
   endGame = true;
   gameStatus = false;
-  if (totalJ < totalO) {
-    gameNot();
-  } else {
     if (cartaA) {
       totalJ += 10;
-      totalJogador.innerHTML = totalJ;
+      console.log('As')
     } else if (cartaAO) {
       totalO += 10;
-      totalOponente.innerHTML = totalO;
     }
+    totalOponente.innerHTML = `${totalO}`
+    totalJogador.innerHTML = `${totalJ}`
     pegarCartaOponenteFinal();
   }
-}
 function pegarCartaOponenteFinal() {
   setTimeout(pegarCartaOponente, 1000);
 }
+
 function gameNot() {
   if (win) {
     ganho = aposta * 2;
     dinheiroSessao += Number(ganho)
     money.innerHTML = `R$${dinheiroSessao}`
+    sessionStorage.DINHEIRO_USUARIO = parseInt(sessionStorage.DINHEIRO_USUARIO) + ganho
     dinheiroGanho.innerHTML = `R$${ganho}<br>x2<br>BlackJack`;
     resJogoWin.style.borderTop = `2px solid rgb(123, 255, 123)`;
     resJogoWin.style.borderLeft = `2px solid rgb(123, 255, 123)`;
@@ -225,6 +231,7 @@ function gameNot() {
     return false;
   }
 }
+
 function notificacao() {
   tempoNot = 200;
   intervalo = setInterval(function closeNot() {
@@ -236,26 +243,27 @@ function notificacao() {
     }
   }, 15);
 }
+
 function atDinheiro() {
-    if (win) {
-        dinheiroVar = dinheiroSessao
-    } else if (!win) {
-        dinheiroVar = dinheiroSessao
-    }
-    emailVar = sessionStorage.EMAIL_USUARIO
+  if (win) {
+    dinheiroVar = dinheiroSessao
+  } else if (!win) {
+    dinheiroVar = dinheiroSessao
+  }
+  emailVar = sessionStorage.EMAIL_USUARIO
 
   fetch("/usuarios/upDinheiro", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js
-      emailServer: emailVar,
-      dinheiroStatusServer: dinheiroVar,
-    }),
-  })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        emailServer: emailVar,
+        dinheiroStatusServer: dinheiroVar,
+      }),
+    })
     .then(function (resposta) {
       console.log("resposta: ", resposta);
 
