@@ -68,4 +68,5 @@ function entrarLogin() {
     nomeUsuario.style.display = 'block'
     logo1.style.display = 'block'
     setTimeout(abrirLogin,100)
+    tabela.style.marginTop = '-474px'
 }

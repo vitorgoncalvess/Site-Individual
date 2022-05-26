@@ -14,7 +14,7 @@
         <div id="money" class="money" style="display: none;"><b style="margin-top: 10px;">R$1000.00</b></div>
         <div id="money1" class="money1" style="display: block;"></div>
         <div id="dinheiro" class="dinheiro">
-            <div class="depositar">Depositar</div>
+            <div onclick="deposito()" class="depositar">Depositar</div>
             <div class="sacar">Sacar</div>
         </div>
         <div id="lista" class="lista">
@@ -59,6 +59,30 @@
             <button onclick="cadastrar()" class="botao">Cadastrar</button> <br>
             <span class="problemaCadastro">Problemas com o cadastro?</span>
         </div>
+    </div>
+    <div id="depositarContainer" class="containerCadastro">
+        <div class="containerFormas">
+            <div id="cartaoForma" class="formas cartao" onclick="cartaoShow()"><img class="cartaoLogo" src="imagens\cartao.png" alt=""> Cartão</div>
+            <div id="boletoForma"  class="formas boleto" onclick="boletoShow()"><img class="boletoLogo" src="imagens/boleto.png" alt=""> Boleto</div>
+            <div id="pixForma" class="formas pix" onclick="pixShow()"><img class="boletoLogo pixLogo" src="imagens/pix.png" alt=""> <span>&nbsp</span>Pix</div>
+            <div class="boletoForm"></div>
+            <div class="pixForm"></div>
+        </div>
+        <div id="cartaoDisplay">
+        <span class="qtdDepo qtdText">Quantidade do Deposito</span>
+        <div class="qtdDepo">
+            <input class="cartaoInput qtdInput" type="text">
+        </div>
+        <div class="cartaoForm">
+            <span class="cartaoInf">Numero do Cartão</span>&nbsp &nbsp &nbsp &nbsp &nbsp<span class="cartaoInf">Nome do Titular</span>
+            <input class="cartaoInput" type="text">
+            <input class="cartaoInput" type="text">
+            <span class="cartaoInf">Data de Vencimento</span>&nbsp &nbsp &nbsp &nbsp<span class="cartaoInf">Codigo de Segurança</span>
+            <input class="cartaoInput" type="text">
+            <input class="cartaoInput" type="text">
+            <button class="botaoCartao">Efetuar Deposito</button>
+        </div>
+    </div>
     </div>
     <div id="blur2">
     <div id="containerCadastroHide" class="containerLoginHide"></div>
