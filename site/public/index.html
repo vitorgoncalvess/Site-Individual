@@ -50,7 +50,7 @@
             <input id="email_input" class="inputsCadastro" type="text"> <br>
             <span class="spanInput">Data de Nascimento</span>
             <span class="spanInputCPF">CPF</span> <br>
-            <input id="data_input" class="inputsCadastro" type="text">
+            <input onkeypress="validarNasc()" id="data_input" class="inputsCadastro" type="text">
             <input id="cpf_input" class="inputsCadastro" type="text"> <br>
             <span class="spanInput">Senha</span>
             <span class="spanInputSenha">Repetir Senha</span><br>
@@ -71,17 +71,32 @@
         <div id="cartaoDisplay">
         <span class="qtdDepo qtdText">Quantidade do Deposito</span>
         <div class="qtdDepo">
-            <input class="cartaoInput qtdInput" type="text">
+            <input id="qtdInput" class="cartaoInput qtdInput" type="text">
         </div>
         <div class="cartaoForm">
             <span class="cartaoInf">Numero do Cartão</span>&nbsp &nbsp &nbsp &nbsp &nbsp<span class="cartaoInf">Nome do Titular</span>
-            <input class="cartaoInput" type="text">
-            <input class="cartaoInput" type="text">
+            <input onkeypress="validarCartao()" id="numeroCartao" class="cartaoInput" type="text">
+            <input id="nomeTitular" class="cartaoInput" type="text">
             <span class="cartaoInf">Data de Vencimento</span>&nbsp &nbsp &nbsp &nbsp<span class="cartaoInf">Codigo de Segurança</span>
-            <input class="cartaoInput" type="text">
-            <input class="cartaoInput" type="text">
-            <button class="botaoCartao">Efetuar Deposito</button>
+            <input onkeypress="validarData()" id="dataVenc" class="cartaoInput" type="text">
+            <input onkeypress="validarCodigo()" id="codigoSeg" class="cartaoInput" type="text">
+            <button class="botaoCartao" onclick="efectDep()">Efetuar Deposito</button>
         </div>
+        </div>
+        <div id="boletoDisplay">
+            <div class="boletoForm">
+            <span class="qtdDep">Quantidade do Deposito</span> <br>
+            <input class="boletoInput" type="text"> <br>
+            <button class="botaoBoleto">Gerar Boleto</button>
+            </div>
+        </div>
+        <div id="pixDisplay">
+            <div class="pixForm">
+                <span class="qtdDep">Quantidade do Deposito</span> <br>
+                <input class="boletoInput" type="text"> <br>
+                <button class="botaoBoleto">Gerar QRCode</button>
+            </div>
+    </div>
     </div>
     </div>
     <div id="blur2">

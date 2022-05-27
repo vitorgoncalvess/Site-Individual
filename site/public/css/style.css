@@ -150,7 +150,7 @@ li#nomeUsuario {
 .containerFormas {
     height: 60px;
     width: 90%;
-    margin-left: 4.5%;
+    margin-left: 8%;
     margin-top: 15px;
     display: flex;
     justify-content: space-around;
@@ -190,7 +190,7 @@ li#nomeUsuario {
     margin-top: 5px;
     border-radius: 5px;
     outline: none;
-    background-color: #323232;
+    background-color: #161616;
     color: white;
     font-size: 20px;
 }
@@ -210,24 +210,63 @@ li#nomeUsuario {
     width: 200px;
     font-size: 20px;
     background-color: #1ca600;
-    border: 2px solid #2bff00;
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    border: none;
 }
 .boleto {
     opacity: 1;
 }
-.boletoForm {
+#boletoDisplay {
     display: none;
+    justify-content: center;
+    align-items: center;
+}
+.boletoForm {
+    margin-top: 30px;
+}
+.qtdDep {
+    color: white;
+    font-size: 30px;
+    margin-left: -6px;
+    margin-top: 0px;
+}
+.boletoInput {
+    width: 220px;
+    height: 35px;
+    margin-left: 47px;
+    margin-top: 20px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #161616;
+    color: white;
+    font-size: 20px;
+}
+.botaoBoleto {
+    margin-top: 30px;
+    margin-left: 60px;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+    background-color: #1ca600;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    border: none;
 }
 .pix {
     justify-content: center;
     margin-right: 0px;
     opacity: 1;
 }
-.pixForm {
+#pixDisplay {
     display: none;
+    justify-content: center;
+    align-items: center;
+}
+.pixForm {
+    margin-top: 30px;
 }
 .cartaoLogo {
     width: 30px;

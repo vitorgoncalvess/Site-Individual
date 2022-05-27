@@ -48,3 +48,12 @@ function cadastrar() {
 
     return false;
 }
+function validarNasc() {
+    if (data_input.value.length == 2) {
+        data_input.value = data_input.value + '/';
+    } else if (data_input.value.length == 5) {
+        data_input.value = data_input.value + '/';
+    } else if (data_input.value.length > 7) {
+        data_input.value = data_input.value.substring(0, 7);
+    }
+}

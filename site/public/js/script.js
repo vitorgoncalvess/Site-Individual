@@ -29,6 +29,127 @@ function validarSessao() {
     }
 }
 
+function efectDep() {
+    numCartao = numeroCartao.value
+    quantidadeDep = qtdInput.value
+    if (numCartao == '') {
+        numeroCartao.style.backgroundColor = '#640000'
+        setTimeout(voltarCor, 3000)
+    } 
+    if (nomeTitular.value == '') {
+        nomeTitular.style.backgroundColor = '#640000'
+        setTimeout(voltarCor, 3000)
+    } 
+    if (dataVenc.value == '') {
+        dataVenc.style.backgroundColor = '#640000'
+        setTimeout(voltarCor, 3000)
+    } 
+    if (codigoSeg.value == '') {
+        codigoSeg.style.backgroundColor = '#640000'
+        setTimeout(voltarCor, 3000) 
+    }
+    if (quantidadeDep == '') {
+        qtdInput.style.backgroundColor = '#640000'
+        setTimeout(voltarCor, 3000)
+    }
+    if (quantidadeDep < 0) {
+        qtdInput.value = ''
+        qtdInput.placeholder = 'Valor Invalido'
+        setTimeout(voltarInput, 3000)
+    }
+    if (numCartao.length < 19) {
+        numeroCartao.value = ''
+        numeroCartao.style.backgroundColor = '#640000'
+        numeroCartao.placeholder = 'Numero Invalido'
+        setTimeout(voltarInputCartao, 3000)
+    }
+    if (quantidadeDep > 0 && numCartao.length == 19 && nomeTitular.value != '' && dataVenc.value.length == 5 && codigoSeg.value.length == 3) {
+        
+        sessionStorage.DINHEIRO_USUARIO = parseInt(sessionStorage.DINHEIRO_USUARIO) + parseInt(quantidadeDep)
+        emailVar = sessionStorage.EMAIL_USUARIO
+        dinheiroVar = sessionStorage.DINHEIRO_USUARIO
+        
+        fetch("/usuarios/upDinheiro", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              emailServer: emailVar,
+              dinheiroStatusServer: dinheiroVar,
+            }),
+          })
+          .then(function (resposta) {
+            console.log("resposta: ", resposta);
+      
+            if (resposta.ok) {
+              setTimeout(() => {
+                console.log("Dinheiro Atualizado");
+              }, 2000);
+            } else {
+              throw "Houve um erro ao tentar atualizar o dinheiro";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+          });
+          money.innerHTML = `R$${sessionStorage.DINHEIRO_USUARIO}`
+          sairBotao()
+          limparInputs()
+    }
+}
+
+function limparInputs() {
+    numeroCartao.value = ''
+    nomeTitular.value = ''
+    dataVenc.value = ''
+    codigoSeg.value = ''
+    qtdInput.value = ''
+}
+
+function validarCartao() {
+    if (numeroCartao.value.length == 4) {
+        numeroCartao.value = numeroCartao.value + ' '
+    } else if (numeroCartao.value.length == 9) {
+        numeroCartao.value = numeroCartao.value + ' '
+    } else if (numeroCartao.value.length == 14) {
+        numeroCartao.value = numeroCartao.value + ' '
+    } else if (numeroCartao.value.length > 18) {
+        numeroCartao.value = numeroCartao.value.substring(0, 18)
+    }
+}
+
+function validarData() {
+    if (dataVenc.value.length == 2) {
+        dataVenc.value = dataVenc.value + '/'
+    }  else if (dataVenc.value.length > 4) {
+        dataVenc.value = dataVenc.value.substring(0, 4)
+    }
+}
+
+function validarCodigo() {
+    if (codigoSeg.value.length > 2) {
+        codigoSeg.value = codigoSeg.value.substring(0, 2)
+    }
+}
+
+function voltarInput() {
+    qtdInput.value = ''
+}
+function voltarInputCartao() {
+    numeroCartao.placeholder = ''
+}
+
+function voltarCor() {
+    numeroCartao.style.backgroundColor = '#161616'
+    nomeTitular.style.backgroundColor = '#161616'
+    dataVenc.style.backgroundColor = '#161616'
+    codigoSeg.style.backgroundColor = '#161616'
+    qtdInput.style.backgroundColor = '#161616'
+}
+
 function loadPropaganda() {
     setInterval(loadPropagandaP, 5000)
 }
@@ -135,7 +256,6 @@ function abrirCadastro() {
         contatoContent.style.cursor = 'default'
         blurCheck = true
         b = 1
-        tabela.style.marginTop = '-903px'
         setTimeout(timerSairBotao, 100)
     } else {
         containerCadastro.style.display = 'none'
@@ -259,15 +379,26 @@ function voltarForma() {
     boletoForma.style.opacity = '1'
     pixForma.style.opacity = '1'
 }
+function sumirForma() {
+    cartaoDisplay.style.display = 'none'
+    boletoDisplay.style.display = 'none'
+    pixDisplay.style.display = 'none'
+}
 function cartaoShow() {
     voltarForma()
+    sumirForma()
+    cartaoDisplay.style.display = 'block'
     cartaoForma.style.opacity = '0.7'
 }
 function boletoShow() {
     voltarForma()
+    sumirForma()
+    boletoDisplay.style.display = 'flex'
     boletoForma.style.opacity = '0.7'
 }
 function pixShow() {
     voltarForma()
+    sumirForma()
+    pixDisplay.style.display = 'flex'
     pixForma.style.opacity = '0.7'
 }
