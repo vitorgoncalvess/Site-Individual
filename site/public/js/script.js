@@ -4,6 +4,7 @@ z = 1
 c = 1
 v = 1
 b = 1
+s = 1
 depCont = 1
 loginC = 0
 cadastroC = 0
@@ -26,6 +27,66 @@ function validarSessao() {
         nomeUsuario.style.display = 'block'
         logo1.style.display = 'block'
         document.getElementById('cadastroContent').removeEventListener('click', abrirCadastro)
+    }
+}
+
+function sacarShow() {
+    s++
+    if (s % 2 == 0) {
+        sacarContainer.style.display = 'block'
+        blurCheck = true
+        blur1.style.filter = 'blur(2px)'
+        blur2.style.filter = 'blur(2px)'
+        setTimeout(timerSairBotao, 100)
+        loginContent.style.cursor = 'default'
+        cadastroContent.style.cursor = 'default'
+        contatoContent.style.cursor = 'default'
+        imagem.style.cursor = 'default'
+        } else {
+            sacarContainer.style.display = 'none'
+            blurCheck = false
+            blur1.style.filter = 'blur(0px)'
+            blur2.style.filter = 'blur(0px)'
+        }
+}
+
+function sacar() {
+    if (sessionStorage.DINHEIRO_USUARIO < 0 || sessionStorage.NOME_USUARIO == undefined || cpfInput.value == '' || qtdSacar.value > sessionStorage.DINHEIRO_USUARIO) {
+        return false 
+    } else {
+        sessionStorage.DINHEIRO_USUARIO = parseInt(sessionStorage.DINHEIRO_USUARIO) - parseInt(qtdSacar.value)
+        emailVar = sessionStorage.EMAIL_USUARIO
+        dinheiroVar = sessionStorage.DINHEIRO_USUARIO
+        
+        fetch("/usuarios/upDinheiro", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              emailServer: emailVar,
+              dinheiroStatusServer: dinheiroVar,
+            }),
+          })
+          .then(function (resposta) {
+            console.log("resposta: ", resposta);
+      
+            if (resposta.ok) {
+              setTimeout(() => {
+                console.log("Dinheiro Atualizado");
+              }, 2000);
+            } else {
+              throw "Houve um erro ao tentar atualizar o dinheiro";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+          });
+          money.innerHTML = `R$${sessionStorage.DINHEIRO_USUARIO}`
+          sairBotao()
+          limparInputs()
     }
 }
 
@@ -107,6 +168,8 @@ function limparInputs() {
     dataVenc.value = ''
     codigoSeg.value = ''
     qtdInput.value = ''
+    cpfInput.value = ''
+    qtdSacar.value = ''
 }
 
 function validarCartao() {
@@ -359,6 +422,7 @@ function sairBotao() {
     containerCadastroHide.style.display = 'block'
     containerLogin.style.display = 'none'
     depositarContainer.style.display = 'none'
+    sacarContainer.style.display = 'none'
     blur1.style.filter = 'blur(0px)'
     blur2.style.filter = 'blur(0px)'
     imagem.style.cursor = 'pointer'
@@ -367,7 +431,7 @@ function sairBotao() {
     loginContent.style.color = '#2ccf0b'
     contatoContent.style.color = '#2ccf0b'
     blurCheck = false
-    v = b = depCont = 1
+    v = b = depCont = s = 1
     loginContent.style.cursor = 'pointer'
     cadastroContent.style.cursor = 'pointer'
     contatoContent.style.cursor = 'pointer'

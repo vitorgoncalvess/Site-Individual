@@ -446,3 +446,31 @@ li#nomeUsuario {
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(102, 102, 102); 
   }
+.pixForm {
+    display: grid;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.saqueInput {
+    width: 320px;
+    height: 35px;
+    margin-left: 0px;
+    margin-top: 10px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #161616;
+    color: white;
+    font-size: 20px;
+}
+.botaoSaque {
+    background-color: #2cc90d;
+    border: 2px solid #2ccf0b;
+    color: white;
+    height: 40px;
+    width: 275px;
+    margin-left: 28px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
