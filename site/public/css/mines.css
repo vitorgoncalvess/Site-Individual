@@ -1,0 +1,96 @@
+.gameContainerMines {
+    border: 2px solid rgb(116, 116, 116);
+    background-color: rgb(46, 46, 46);
+    width: 800px;
+    height: 575px;
+    margin-top: 50px;
+    margin-left: 280px;
+    justify-content: center;
+}
+.apostaInput {
+    margin-top: 100px;
+    margin-left: 10px;
+    height: 30px;
+    outline: none;    
+    background-color: rgb(37, 37, 37);
+    color: white;
+    border-radius: 5px;
+}
+.apostaSelect {
+    width: 175px;
+    margin-left: 11px;
+    margin-top: 20px;
+    height: 30px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 5px;
+    background-color: rgb(48, 48, 48);
+    color: white;
+}
+.apostaBotao {
+    width: 150px;
+    height: 40px;
+    margin-left: 25px;
+    font-size: 15px;
+    margin-top: 20px;
+    background-color: rgb(0, 223, 0);
+    border: 2px solid green;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+.apostaParar {
+    width: 150px;
+    height: 40px;
+    margin-left: 25px;
+    font-size: 15px;
+    margin-top: 250px;
+    background-color: rgb(190, 0, 0);
+    border: 2px solid red;
+    border-radius: 5px;
+    color: white;
+    cursor: default;
+}
+.apostaMines {
+    border-right: 2px solid rgb(41, 41, 41);
+    width: 200px;
+    height: 575px;
+    background-color: rgb(94, 94, 94);
+}
+
+.mines1 {
+    height: 102.5px;
+    margin-top: -555px;
+    margin-left: 225px;
+    width: 550px;
+    display: flex;
+}
+
+.mines2, .mines3, .mines4, .mines5 {
+    height: 102.5px;
+    margin-top: 5px;
+    margin-left: 225px;
+    width: 550px;
+    display: flex;
+}
+
+.minesJogo {
+    border: 2px solid rgb(59, 59, 59);
+    background-color: rgb(80, 80, 80);
+    border-radius: 10px;
+    height: 100px;
+    width: 150px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+}
+.minesJogo1 {
+    border: 2px solid rgb(59, 59, 59);
+    background-color: rgb(100, 100, 100);
+    border-radius: 10px;
+    height: 100px;
+    width: 150px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    cursor: pointer;
+}
