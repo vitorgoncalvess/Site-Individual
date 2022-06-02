@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blackjack.css">
+    <link rel="stylesheet" href="../css/mines.css">
+    <title>Mines</title>    
+</head>
+<body>
+    <div id="blur1" class="blur">
+        <div id="header" class="header">
+            <img  onclick="location.href='../index.html'" class="logo" src="../imagens/logo.png" alt="">
+            <div id="money" class="money" style="display: none;"><b style="margin-top: 10px;">R$1000.00</b></div>
+            <div id="money1" class="money1" style="display: block;"></div>
+            <div id="dinheiro" class="dinheiro">
+                <div class="depositar">Depositar</div>
+                <div class="sacar">Sacar</div>
+            </div>
+            <div id="lista" class="lista">
+                <ul class="ul1">
+                    <li id="loginContent">Login</li>
+                    <li id="nomeUsuario" style="display: none;"></li>
+                </ul>
+                <ul class="ul2">
+                    <li id="cadastroContent">Cadastro</li>
+                </ul>
+                <ul class="ul3">
+                    <li id="contatoContent">Contato</li>
+                </ul>
+                <img id="logo1" class="logo1" src="../imagens/tres pontos.png" alt="">
+            </div>
+        </div>
+        </div>
+        <div id="containerLogin" class="containerLogin">
+            <span class="loginInputs">Email</span> <br>
+            <input id="emailLogin_input" class="inputsLogin" type="text"> <br>
+            <span class="loginInputs">Senha</span> <br>
+            <input id="senhaLogin_input" class="inputsLogin" type="password"> <br>
+            <button onclick="entrar()" class="botaoLogin">Entrar</button> <br>
+            <span class="problemaLogin">Esqueceu a senha</span>
+            <span class="problemaLogin">Não tem conta?</span>  
+        </div>
+        <div id="containerCadastro" class="containerCadastro">
+            <div class="camposCadastro">
+                <div class="cadastreSe">Cadastre-se Agora</div>
+                <span class="spanInput">Nome Completo</span>
+                <span class="spanInputEmail">Email</span> <br>
+                <input id="nome_input" class="inputsCadastro" type="text">
+                <input id="email_input" class="inputsCadastro" type="text"> <br>
+                <span class="spanInput">Data de Nascimento</span>
+                <span class="spanInputCPF">CPF</span> <br>
+                <input id="data_input" class="inputsCadastro" type="text">
+                <input id="cpf_input" class="inputsCadastro" type="text"> <br>
+                <span class="spanInput">Senha</span>
+                <span class="spanInputSenha">Repetir Senha</span><br>
+                <input id="senha_input" class="inputsCadastro" type="password">
+                <input id="confirmacao_senha_input" class="inputsCadastro" type="password"> <br>
+                <button onclick="cadastrar()" class="botao">Cadastrar</button> <br>
+                <span class="problemaCadastro">Problemas com o cadastro?</span>
+            </div>
+        </div>
+        <div class="gameContainerMines">
+            <div class="apostaMines">
+                <input class="apostaInput" type="number" placeholder="R$">
+                <select class="apostaSelect" name="" id="apostaSelect"> 
+                    <option value="2">2 Minas</option>
+                    <option value="3">3 Minas</option>
+                    <option value="4">4 Minas</option>
+                    <option value="5">5 Minas</option>
+                    <option value="6">6 Minas</option>
+                    <option value="7">7 Minas</option>
+                    <option value="8">8 Minas</option>
+                    <option value="9">9 Minas</option>
+                    <option value="10">10 Minas</option>
+                    <option value="11">11 Minas</option>
+                    <option value="12">12 Minas</option>
+                    <option value="13">13 Minas</option>
+                    <option value="14">14 Minas</option>
+                    <option value="15">15 Minas</option>
+                    <option value="16">16 Minas</option>
+                    <option value="17">17 Minas</option>
+                    <option value="18">18 Minas</option>
+                    <option value="19">19 Minas</option>
+                    <option value="20">20 Minas</option>
+                    <option value="21">21 Minas</option>
+                    <option value="22">22 Minas</option>
+                    <option value="23">23 Minas</option>
+                    <option value="24">24 Minas</option>
+                </select> <br>  
+                <button class="apostaBotao" onclick="startMines()">Apostar</button> <br>
+                <button class="apostaParar">Parar</button>
+            </div>
+            <div id="mines1" class="mines1">
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+            </div>
+            <div id="mines2" class="mines2">
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+            </div>
+            <div id="mines3" class="mines3">
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+            </div>
+            <div id="mines4" class="mines4">
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+            </div>
+            <div id="mines5" class="mines5">
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+                <div id="minesJogo" class="minesJogo"></div>
+            </div>
+        </div>
+        <div class="futter"></div>
+</body>
+</html> 
+<script src="../js/script.js"></script>
+<script src="../js/mines.js"></script>
