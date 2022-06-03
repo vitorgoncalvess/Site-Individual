@@ -27,7 +27,6 @@ function entrar() {
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
@@ -70,4 +69,8 @@ function entrarLogin() {
     setTimeout(abrirLogin,100)
     tabela.style.marginTop = '-474px'
 }
-document.getElementById('senhaLogin_input').addEventListener('keypress', entrar);
+document.getElementById('senhaLogin_input').addEventListener('keypress', function (e) {
+    if (e.keyCode == 13) {
+        entrar();
+    }
+});

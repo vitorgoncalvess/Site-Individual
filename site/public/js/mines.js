@@ -48,10 +48,18 @@ function startMines() {
   money.innerHTML = `R$${dinheiroSessao.toFixed(2)}`
   botaoParar.style.cursor = 'pointer'
   botaoParar.style.backgroundColor = 'rgb(0, 190,0)'
+  botaoParar.innerHTML = `Retirar R$${aposta.toFixed(2)}<br>`
   document.getElementById('botaoParar').addEventListener('click', pararJogo)
+  document.getElementById('botaoIniciar').removeAttribute('onclick')
+    document.getElementById('botaoIniciar').style.cursor = 'default'
+    document.getElementById('botaoIniciar').style.backgroundColor = 'rgb(0, 141,0)'
     qtdMinas = apostaSelect.value;
     multiplicador = 1
-    multplier = 1.14
+    if (qtdMinas > 2) {
+        multiplicador = 1.08 ** qtdMinas
+    }
+    multplier = 1.09
+    minasClicadas = 0
     minaJogo = [];
     mines1.innerHTML = ''
     mines2.innerHTML = ''
@@ -99,17 +107,17 @@ function startMines() {
 function clickMine(mina, id) {
     minasClicadas ++
     x = 25 - qtdMinas
-    for (let y = 0; y < minasClicadas; y++) {
+    for (let y = qtdMinas - 2; y < minasClicadas; y++) {
         if (y < 5) {
-            multplier = 1.14
+            multplier = 1.08
         } else if (y >= 5 && y < 10) { 
-            multplier = 1.15
+            multplier = 1.11
         } else if (y >= 10 && y < 15) { 
-            multplier = 1.16
+            multplier = 1.15
         } else if (y >= 15 && y < 20) { 
-            multplier = 1.17
+            multplier = 1.20
         } else if (y >= 20) { 
-            multplier = 1.18
+            multplier = 1.26
         }
     }
     if (mina) {
@@ -120,8 +128,10 @@ function clickMine(mina, id) {
         x--
         document.getElementById(`minesJogo${id}`).style.backgroundColor = 'rgb(0,255,0)';
         document.getElementById(`minesJogo${id}`).style.cursor = 'default';
+        document.getElementById(`minesJogo${id}`).removeAttribute('onclick');
         multiplicador *= multplier
-        botaoParar.innerHTML = `Retirar R$${(aposta * multiplicador).toFixed(2)}`
+        botaoParar.innerHTML = `Retirar R$${(aposta * multiplicador).toFixed(2)}<br>
+        <span style="font-size: 12px;">(${(multiplicador.toFixed(2))}x)</span>`
     }
     if (x == 0) { 
         pararJogo()
@@ -136,16 +146,27 @@ function endGame() {
     botaoParar.style.backgroundColor = 'rgb(0,141,0)'
     document.getElementById('botaoParar').removeEventListener('click', pararJogo)
     virarMinas();
+    document.getElementById('botaoIniciar').addEventListener('click', startMines)
+    document.getElementById('botaoIniciar').style.cursor = 'pointer'
+    document.getElementById('botaoIniciar').style.backgroundColor = 'rgb(0, 255,0)'
 }
 function pararJogo() {
     aposta *= multiplicador
     dinheiroSessao += aposta
     sessionStorage.DINHEIRO_USUARIO = parseInt(sessionStorage.DINHEIRO_USUARIO) + aposta
-    money.innerHTML = `R$${dinheiroSessao.toFixed(2)}`
-    botaoParar.style.cursor = 'default'
-    botaoParar.style.backgroundColor = 'rgb(0,141,0)'
-    document.getElementById('botaoParar').removeEventListener('click', pararJogo)
+    money.innerHTML = `R$${Number(dinheiroSessao).toFixed(2)}`
+    apostaInput.value = ''
     virarMinas();
+    for (let x = 0; x < 25; x++) {
+        document.getElementById(`minesJogo${x}`).removeAttribute('onclick');
+        document.getElementById(`minesJogo${x}`).style.cursor = 'default';
+    }
+    document.getElementById('botaoParar').style.cursor = 'default'
+    document.getElementById('botaoParar').style.backgroundColor = 'rgb(0,141,0)'
+    document.getElementById('botaoParar').removeEventListener('click', pararJogo)
+    document.getElementById('botaoIniciar').style.cursor = 'pointer'
+    document.getElementById('botaoIniciar').style.backgroundColor = 'rgb(0,255,0)'
+    document.getElementById('botaoIniciar').addEventListener('click', startMines)
 }
 function virarMinas() {
     for (let x = 0; x < 25; x++) {

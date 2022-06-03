@@ -23,7 +23,7 @@ function validarSessao() {
         sessao = sessionStorage.NOME_USUARIO.split(" ")
         dinheiroSessao = sessionStorage.DINHEIRO_USUARIO
         nomeUsuario.innerHTML = `${sessao[0]}`
-        money.innerHTML = `R$${dinheiroSessao}`
+        money.innerHTML = `R$${Number(dinheiroSessao).toFixed(2)}`
         nomeUsuario.style.display = 'block'
         logo1.style.display = 'block'
         document.getElementById('cadastroContent').removeEventListener('click', abrirCadastro)
