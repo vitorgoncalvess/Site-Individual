@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="../css/mines.css">
     <title>Mines</title>    
 </head>
-<body>
+<body onload="validarSessao()">
     <div id="blur1" class="blur">
         <div id="header" class="header">
             <img  onclick="location.href='../index.html'" class="logo" src="../imagens/logo.png" alt="">
             <div id="money" class="money" style="display: none;"><b style="margin-top: 10px;">R$1000.00</b></div>
             <div id="money1" class="money1" style="display: block;"></div>
             <div id="dinheiro" class="dinheiro">
-                <div class="depositar">Depositar</div>
-                <div class="sacar">Sacar</div>
+                <div onclick="location.href='../index.html'" class="depositar">Depositar</div>
+                <div onclick="location.href='../index.html'" class="sacar">Sacar</div>
             </div>
             <div id="lista" class="lista">
                 <ul class="ul1">
@@ -64,7 +64,7 @@
         </div>
         <div class="gameContainerMines">
             <div class="apostaMines">
-                <input class="apostaInput" type="number" placeholder="R$">
+                <input id="apostaInput" class="apostaInput" type="number" placeholder="R$">
                 <select class="apostaSelect" name="" id="apostaSelect"> 
                     <option value="2">2 Minas</option>
                     <option value="3">3 Minas</option>
@@ -91,7 +91,7 @@
                     <option value="24">24 Minas</option>
                 </select> <br>  
                 <button class="apostaBotao" onclick="startMines()">Apostar</button> <br>
-                <button class="apostaParar">Parar</button>
+                <button id="botaoParar" class="apostaParar">Retirar </button>
             </div>
             <div id="mines1" class="mines1">
                 <div id="minesJogo" class="minesJogo"></div>
