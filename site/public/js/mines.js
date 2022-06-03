@@ -1,14 +1,11 @@
 function shuffle(minaJogo) {
     let x = minaJogo.length,  y;
   
-    // While there remain elements to shuffle.
     while (x != 0) {
   
-      // Pick a remaining element.
       y = Math.floor(Math.random() * x);
       x--;
-  
-      // And swap it with the current element.
+
       [minaJogo[x], minaJogo[y]] = [
         minaJogo[y], minaJogo[x]];
     }
@@ -66,8 +63,15 @@ function clickMine(mina, id) {
     if (mina) {
         document.getElementById(`minesJogo${id}`).style.backgroundColor = 'red';
         document.getElementById(`minesJogo${id}`).style.cursor = 'default';
+        endGame();
     } else {
         document.getElementById(`minesJogo${id}`).style.backgroundColor = 'rgb(0,255,0)';
-        document.getElementById(`minesJogo${id}`).style.cursor = 'pointer';
+        document.getElementById(`minesJogo${id}`).style.cursor = 'default';
+    }
+}
+function endGame() {
+    for (let x = 0; x < 25; x++) {
+        document.getElementById(`minesJogo${x}`).removeAttribute('onclick');
+        document.getElementById(`minesJogo${x}`).style.cursor = 'default';
     }
 }

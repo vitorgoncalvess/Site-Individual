@@ -70,3 +70,4 @@ function entrarLogin() {
     setTimeout(abrirLogin,100)
     tabela.style.marginTop = '-474px'
 }
+document.getElementById('senhaLogin_input').addEventListener('keypress', entrar);
