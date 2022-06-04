@@ -54,13 +54,15 @@ function startMines() {
     document.getElementById('botaoIniciar').style.cursor = 'default'
     document.getElementById('botaoIniciar').style.backgroundColor = 'rgb(0, 141,0)'
     qtdMinas = apostaSelect.value;
-    multiplicador = 1
-    if (qtdMinas > 2) {
-        multiplicador = 1.08 ** qtdMinas
+    if (qtdMinas == 2) {
+        multiplicador = 1
+    } else {
+    multiplicador = Math.pow(1.08, qtdMinas * 1.73)
     }
-    multplier = 1.09
+    multplier = 1.08
     minasClicadas = 0
     minaJogo = [];
+    rest = 25 - qtdMinas
     mines1.innerHTML = ''
     mines2.innerHTML = ''
     mines3.innerHTML = ''
@@ -106,7 +108,6 @@ function startMines() {
 }
 function clickMine(mina, id) {
     minasClicadas ++
-    x = 25 - qtdMinas
     for (let y = qtdMinas - 2; y < minasClicadas; y++) {
         if (y < 5) {
             multplier = 1.08
@@ -125,7 +126,7 @@ function clickMine(mina, id) {
         document.getElementById(`minesJogo${id}`).style.cursor = 'default';
         endGame();
     } else {
-        x--
+        rest--
         document.getElementById(`minesJogo${id}`).style.backgroundColor = 'rgb(0,255,0)';
         document.getElementById(`minesJogo${id}`).style.cursor = 'default';
         document.getElementById(`minesJogo${id}`).removeAttribute('onclick');
@@ -133,7 +134,7 @@ function clickMine(mina, id) {
         botaoParar.innerHTML = `Retirar R$${(aposta * multiplicador).toFixed(2)}<br>
         <span style="font-size: 12px;">(${(multiplicador.toFixed(2))}x)</span>`
     }
-    if (x == 0) { 
+    if (rest == 0) { 
         pararJogo()
     }
 }
@@ -145,10 +146,20 @@ function endGame() {
     botaoParar.style.cursor = 'default'
     botaoParar.style.backgroundColor = 'rgb(0,141,0)'
     document.getElementById('botaoParar').removeEventListener('click', pararJogo)
+    dinheiroGanho.innerHTML = `-R$${aposta}<br>Mines`;
+    resJogoWin.style.borderTop = `2px solid rgb(255, 123, 123)`;
+    resJogoWin.style.borderLeft = ` 2px solid rgb(255, 123, 123)`;
+    resJogoWin.style.color = "rgb(255, 123, 123)";
+    loadingBar1.style.backgroundColor = "rgb(117, 0, 0)";
+    loadingBar2.style.backgroundColor = "rgb(255, 0, 0)";
+    resJogoWin.style.display = "flex";
     virarMinas();
+    atDinheiro()
+    notificacao()
     document.getElementById('botaoIniciar').addEventListener('click', startMines)
     document.getElementById('botaoIniciar').style.cursor = 'pointer'
     document.getElementById('botaoIniciar').style.backgroundColor = 'rgb(0, 255,0)'
+    botaoParar.innerHTML = 'Retirar'
 }
 function pararJogo() {
     aposta *= multiplicador
@@ -156,7 +167,16 @@ function pararJogo() {
     sessionStorage.DINHEIRO_USUARIO = parseInt(sessionStorage.DINHEIRO_USUARIO) + aposta
     money.innerHTML = `R$${Number(dinheiroSessao).toFixed(2)}`
     apostaInput.value = ''
+    dinheiroGanho.innerHTML = `R$${aposta.toFixed(2)}<br>${multiplicador.toFixed(2)}x<br>Mines`;
+    resJogoWin.style.borderTop = `2px solid rgb(123, 255, 123)`;
+    resJogoWin.style.borderLeft = `2px solid rgb(123, 255, 123)`;
+    resJogoWin.style.color = "rgb(123, 255, 123)";
+    loadingBar1.style.backgroundColor = "rgb(0, 117, 0)";
+    loadingBar2.style.backgroundColor = "rgb(0, 255, 0)";
+    resJogoWin.style.display = "flex";
     virarMinas();
+    atDinheiro()
+    notificacao()
     for (let x = 0; x < 25; x++) {
         document.getElementById(`minesJogo${x}`).removeAttribute('onclick');
         document.getElementById(`minesJogo${x}`).style.cursor = 'default';
@@ -167,6 +187,7 @@ function pararJogo() {
     document.getElementById('botaoIniciar').style.cursor = 'pointer'
     document.getElementById('botaoIniciar').style.backgroundColor = 'rgb(0,255,0)'
     document.getElementById('botaoIniciar').addEventListener('click', startMines)
+    botaoParar.innerHTML = 'Retirar'
 }
 function virarMinas() {
     for (let x = 0; x < 25; x++) {
@@ -177,3 +198,48 @@ function virarMinas() {
         }
     } 
 }
+function atDinheiro() {
+    dinheiroVar = dinheiroSessao
+    emailVar = sessionStorage.EMAIL_USUARIO
+  
+    fetch("/usuarios/upDinheiro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          emailServer: emailVar,
+          dinheiroStatusServer: dinheiroVar,
+        }),
+      })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+  
+        if (resposta.ok) {
+          setTimeout(() => {
+            console.log("Dinheiro Atualizado");
+          }, 2000);
+        } else {
+          throw "Houve um erro ao tentar atualizar o dinheiro";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  }
+  function notificacao() {
+    tempoNot = 200;
+    intervalo = setInterval(function closeNot() {
+      tempoNot--;
+      loadingBar2.style.width = `${tempoNot}px`;
+      if (tempoNot == 0) {
+        clearInterval(intervalo);
+        resJogoWin.style.display = "none";
+      }
+    }, 15);
+  }
+  

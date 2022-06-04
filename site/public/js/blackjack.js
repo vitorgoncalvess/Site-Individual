@@ -36,7 +36,7 @@ function validarSessao() {
     sessao = sessionStorage.NOME_USUARIO.split(" ")
     dinheiroSessao = sessionStorage.DINHEIRO_USUARIO
     nomeUsuario.innerHTML = `${sessao[0]}`
-    money.innerHTML = `R$${dinheiroSessao}`
+    money.innerHTML = `R$${Number(dinheiroSessao).toFixed(2)}`
     nomeUsuario.style.display = 'block'
     logo1.style.display = 'block'
   }
@@ -55,7 +55,7 @@ function apostar() {
   }
   sessionStorage.DINHEIRO_USUARIO -= aposta
   dinheiroSessao -= aposta
-  money.innerHTML = `R$${dinheiroSessao}`
+  money.innerHTML = `R$${Number(dinheiroSessao).toFixed(2)}`
   jogador.innerHTML = "";
   oponente.innerHTML = "";
   totalJ = 0;
@@ -196,7 +196,7 @@ function gameNot() {
   if (win) {
     ganho = aposta * 2;
     dinheiroSessao += Number(ganho)
-    money.innerHTML = `R$${dinheiroSessao}`
+    money.innerHTML = `R$${Number(dinheiroSessao).toFixed(2)}`
     sessionStorage.DINHEIRO_USUARIO = parseInt(sessionStorage.DINHEIRO_USUARIO) + ganho
     dinheiroGanho.innerHTML = `R$${ganho}<br>x2<br>BlackJack`;
     resJogoWin.style.borderTop = `2px solid rgb(123, 255, 123)`;
