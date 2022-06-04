@@ -1,5 +1,10 @@
-
+v = 1
 minasClicadas = 0
+dinheiroInicial = sessionStorage.DINHEIRO_USUARIO
+dinheiroGasto = 0
+qtdInicio.innerHTML = `Dinheiro Inicial <br> <span style="margin-left: 15px;">R$${Number(dinheiroInicial).toFixed(2)}</span>`
+qtdAposta.innerHTML = `Dinheiro Gasto <br> <span style="margin-left: 20px;">R$0.00 </span>`
+qtdRes.innerHTML = `R$0.00`
     function validarSessao() {
     if (sessionStorage.NOME_USUARIO != undefined) {
       loginContent.style.display = 'none'
@@ -46,6 +51,8 @@ function startMines() {
   sessionStorage.DINHEIRO_USUARIO -= aposta
   dinheiroSessao -= aposta
   money.innerHTML = `R$${dinheiroSessao.toFixed(2)}`
+  dinheiroGasto += aposta
+  qtdAposta.innerHTML = `Dinheiro Gasto <br> <span style="margin-left: 20px;">R$${dinheiroGasto}</span>`
   botaoParar.style.cursor = 'pointer'
   botaoParar.style.backgroundColor = 'rgb(0, 190,0)'
   botaoParar.innerHTML = `Retirar R$${aposta.toFixed(2)}<br>`
@@ -147,6 +154,11 @@ function endGame() {
     botaoParar.style.backgroundColor = 'rgb(0,141,0)'
     document.getElementById('botaoParar').removeEventListener('click', pararJogo)
     dinheiroGanho.innerHTML = `-R$${aposta}<br>Mines`;
+    if (dinheiroSessao - dinheiroInicial < 0) {
+        qtdRes.innerHTML = `<span style="color: red;">-R$${(dinheiroInicial - dinheiroSessao).toFixed(2)}</span>`
+    } else {
+        qtdRes.innerHTML = `<span style="color: rgb(0,255,0);">+R$${(dinheiroSessao - dinheiroInicial).toFixed(2)}</span>`
+    }
     resJogoWin.style.borderTop = `2px solid rgb(255, 123, 123)`;
     resJogoWin.style.borderLeft = ` 2px solid rgb(255, 123, 123)`;
     resJogoWin.style.color = "rgb(255, 123, 123)";
@@ -166,8 +178,12 @@ function pararJogo() {
     dinheiroSessao += aposta
     sessionStorage.DINHEIRO_USUARIO = parseInt(sessionStorage.DINHEIRO_USUARIO) + aposta
     money.innerHTML = `R$${Number(dinheiroSessao).toFixed(2)}`
-    apostaInput.value = ''
     dinheiroGanho.innerHTML = `R$${aposta.toFixed(2)}<br>${multiplicador.toFixed(2)}x<br>Mines`;
+    if (dinheiroSessao - dinheiroInicial < 0) {
+        qtdRes.innerHTML = `<span style="color: red;">-R$${(dinheiroInicial - dinheiroSessao).toFixed(2)}</span>`
+    } else {
+        qtdRes.innerHTML = `<span style="color: rgb(0,255,0);">+R$${(dinheiroSessao - dinheiroInicial).toFixed(2)}</span>`
+    }
     resJogoWin.style.borderTop = `2px solid rgb(123, 255, 123)`;
     resJogoWin.style.borderLeft = `2px solid rgb(123, 255, 123)`;
     resJogoWin.style.color = "rgb(123, 255, 123)";
@@ -241,5 +257,13 @@ function atDinheiro() {
         resJogoWin.style.display = "none";
       }
     }, 15);
+  }
+  function metricas() {
+    v++
+    if (v % 2 == 0) {
+        metricasS.style.display = 'block'
+    } else {
+        metricasS.style.display = 'none'
+    }
   }
   

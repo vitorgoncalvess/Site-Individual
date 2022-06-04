@@ -43,7 +43,7 @@ li {
     align-content: center;
     position: relative;
     display: flex;
-    
+    cursor: pointer;
 }
 .money1 {
     margin-left: 850px;
