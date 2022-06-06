@@ -500,7 +500,7 @@ function listHist() {
     setTimeout(listarHistorico, 1000)
 }
 function listarHistorico() {
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i <= 11; i++) {
         containerJogos.innerHTML += `<div class="historicoJogo"><div class="nomeHist">${listJson[i].nome}</div> <div class="regHist">R$${listJson[i].registro}</div> <div class="multiHist">${listJson[i].multi}x</div> <div class="jogoHist">${listJson[i].jogo}</div> <div class="horarioHist">${listJson[i].horario}</div></div>`
     }
 }
