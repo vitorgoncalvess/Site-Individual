@@ -1,3 +1,4 @@
+
 x = 1
 y = 2
 z = 1
@@ -465,4 +466,41 @@ function pixShow() {
     sumirForma()
     pixDisplay.style.display = 'flex'
     pixForma.style.opacity = '0.7'
+}
+function listHist() {
+    fetch("/usuarios/listHist", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                listJson = json
+            });
+
+        } else {
+
+            console.log("Houve um erro ao tentar realizar a atualização do historico");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+    setTimeout(listarHistorico, 1000)
+}
+function listarHistorico() {
+    for (let i = 0; i < 11; i++) {
+        containerJogos.innerHTML += `<div class="historicoJogo"><div class="nomeHist">${listJson[i].nome}</div> <div class="regHist">R$${listJson[i].registro}</div> <div class="multiHist">${listJson[i].multi}x</div> <div class="jogoHist">${listJson[i].jogo}</div> <div class="horarioHist">${listJson[i].horario}</div></div>`
+    }
 }

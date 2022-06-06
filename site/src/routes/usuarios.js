@@ -23,5 +23,11 @@ router.post("/autenticar", function (req, res) {
 router.post("/upDinheiro", function (req, res) {
     usuarioController.upDinheiro(req, res);
 })
+router.post("/historico", function (req, res) {
+    usuarioController.historico(req, res);
+})
+router.post("/listHist", function (req, res) {
+    usuarioController.listHist(req, res);
+})
 
 module.exports = router;

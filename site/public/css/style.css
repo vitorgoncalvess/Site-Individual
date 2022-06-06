@@ -480,3 +480,32 @@ li#nomeUsuario {
     font-size: 20px;
     border-radius: 5px;
 }
+.historicoJogo {
+    border-bottom: 2px solid rgb(31, 31, 31);
+    height: 31.5px;
+    color: white;
+    display: flex;
+}
+.nomeHist {
+    margin-left: 10px;
+    width: 50px;
+}
+.regHist {
+    margin-left: 50px;
+    width: 50px;
+    color: rgb(0, 226, 0);
+}
+.multiHist {
+    margin-left: 30px;
+    width: 50px;
+    color: rgb(0, 184, 0);
+}
+.jogoHist {
+    margin-left: 20px;
+    width: 50px;
+    color: rgb(196, 196, 196);
+}
+.horarioHist {
+    margin-left: 500px;
+    width: 200px;
+}

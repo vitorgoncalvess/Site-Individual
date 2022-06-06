@@ -27,9 +27,23 @@ function upDinheiroModel(email, dinheiroStatus) {
     `;
     return database.executar(instrucao)
 }
+function historico(registro, multi, jogo, idUsuario,) {
+    var instrucao = `
+        INSERT INTO historico VALUES (now(), '${registro}','${multi}', '${jogo}', '${idUsuario}');
+    `;
+    return database.executar(instrucao)
+}
+function listHist() {
+    var instrucao = `
+        SELECT horario, registro, multi, jogo, nome FROM historico, usuario where fkUsuario = idUsuario ORDER BY registro DESC;
+    `;
+    return database.executar(instrucao)
+}
 
 module.exports = {
     entrar,
     cadastrar,
-    upDinheiroModel
+    upDinheiroModel,
+    historico,
+    listHist
 };

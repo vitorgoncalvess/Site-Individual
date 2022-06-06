@@ -88,9 +88,30 @@ function upDinheiro(req, res) {
         }
     )
 }
+function historico(req, res) {
+    var registro = req.body.regServer
+    var jogo = req.body.jogoServer
+    var idUsuario = req.body.idServer
+    var multi = req.body.multiServer
+    usuarioModel.historico(registro, multi,  jogo, idUsuario)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+}
+function listHist(req, res) {
+    usuarioModel.listHist().then(
+        function (resultado) {
+            res.json(resultado)
+        }
+    )
+}
 
 module.exports = {
     entrar,
     cadastrar,
-    upDinheiro
+    upDinheiro,
+    historico,
+    listHist
 }

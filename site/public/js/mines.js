@@ -167,7 +167,7 @@ function endGame() {
     resJogoWin.style.display = "flex";
     virarMinas();
     atDinheiro()
-    notificacao()
+    notificacao() 
     document.getElementById('botaoIniciar').addEventListener('click', startMines)
     document.getElementById('botaoIniciar').style.cursor = 'pointer'
     document.getElementById('botaoIniciar').style.backgroundColor = 'rgb(0, 255,0)'
@@ -193,6 +193,7 @@ function pararJogo() {
     virarMinas();
     atDinheiro()
     notificacao()
+    historico()
     for (let x = 0; x < 25; x++) {
         document.getElementById(`minesJogo${x}`).removeAttribute('onclick');
         document.getElementById(`minesJogo${x}`).style.cursor = 'default';
@@ -266,4 +267,40 @@ function atDinheiro() {
         metricasS.style.display = 'none'
     }
   }
+  function historico() {
+
+        varRegistro = aposta.toFixed(2)
+        varJogo = 'Mines'
+        idUsuario = sessionStorage.ID_USUARIO
+        varMulti = multiplicador.toFixed(2)
+    fetch("/usuarios/historico", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          regServer: varRegistro,
+          jogoServer: varJogo,
+          idServer: idUsuario,
+          multiServer: varMulti
+        }),
+      })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
   
+        if (resposta.ok) {
+          setTimeout(() => {
+            console.log("Historico Atualizado");
+          }, 2000);
+        } else {
+          throw "Houve um erro ao tentar atualizar o historico";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  }
