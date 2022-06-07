@@ -73,6 +73,13 @@ li#nomeUsuario {
     width: 100%;
     margin-top: 190px;
     box-shadow: 2px 2px 10px 2px;
+    display: flex;
+    justify-content: center;
+}
+.futI {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .logo {
     height: 50px;

@@ -35,7 +35,7 @@ function historico(registro, multi, jogo, idUsuario,) {
 }
 function listHist() {
     var instrucao = `
-        SELECT horario, registro, multi, jogo, nome FROM historico, usuario where fkUsuario = idUsuario ORDER BY registro DESC;
+        SELECT horario, registro, multi, jogo, nome FROM historico, usuario where fkUsuario = idUsuario ORDER BY multi DESC;
     `;
     return database.executar(instrucao)
 }

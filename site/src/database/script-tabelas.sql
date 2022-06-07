@@ -15,6 +15,7 @@ create table usuario (
 create table historico (
 	horario char(8) PRIMARY KEY,
 	registro VARCHAR(45),
+	multi VARCHAR(45),
 	jogo VARCHAR(45),
 	fkUsuario int,
 	FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario)
